@@ -1,0 +1,106 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp5
+{
+    internal class Program
+    {
+        public static int kp1z1(int a, int b)
+        {
+            return a * a + b * b;
+        }
+        public static bool kp2z2(int a)
+        {
+            if (a > 99 && a < 1000 && a % 17 == 0)
+                return true;
+            else 
+                return false;
+        }
+        public static bool kp2z6(int a, int p)
+        {
+            if ((Math.Pow(a, p) - a) % p == 0)
+                return true;
+            else
+                return false;
+        }
+        public static void kp3z1(int a)
+        {
+            for (int i = 0; i < a; i++)
+            {
+                Console.WriteLine(i * i * i + 3);
+            }
+           
+        }
+        public static ArrayList k3z3(int a)
+        {
+            for (int i = 1; i <= a; i++)
+            {
+                if (a%1==0)
+                {
+                    Console.WriteLine(i);
+                }
+            }
+            ArrayList dzielniki = new ArrayList();
+            int n = int.Parse(Console.ReadLine());
+            dzielniki = kp3z3(n);
+            foreach (int a in dzielniki)
+            {
+                Console.WriteLine(a + "");
+            }
+        }
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Podaj a");
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine("Podaj b");
+            int b = int.Parse(Console.ReadLine());
+            //Do zadania kp2z6:
+            Console.WriteLine("Podaj P liczbe pierwszą");
+            int p = int.Parse(Console.ReadLine());
+            /*Zadanie 1 kp1z1
+            Console.WriteLine(kp1z1(a , b));*/
+            /*Zadanie kp2z2
+            Console.WriteLine(kp2z2(a));*/
+          /*  Zadanie kp2z6
+            Console.WriteLine(kp2z6(a, p));*/
+          /*Zadanie kp3z1
+            kp3z1(a);*/
+         /* Zadanie kp3z3
+            kp3z3(a);*/
+        }
+    }
+}
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp6
+{
+    internal class Program
+    {
+        public static int Kp4z2(int n)
+        {
+            int sum = 0, cyfra;
+            while (n > 0)
+            {
+                cyfra = n % 10;
+                sum += cyfra;
+                n /= 10;
+            }
+            return sum;
+        }
+        static void Main(string[] args)
+        {
+            int a = int.Parse(Console.ReadLine());
+            Console.WriteLine(Kp4z2(a));
+        }
+    }
+}
