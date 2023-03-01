@@ -1,0 +1,49 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Osoba
+    {
+        string imie;
+    }
+    class Kierownik : Osoba
+    {
+    }
+    class Spawacz : Osoba
+    {
+    }
+    class Zasob
+    {
+        string Nazwa { get; set; }
+    }
+    class Czesc : Zasob
+    {
+
+    }
+    class Maszyna : Zasob
+    {
+
+    }
+    class Produkt
+    {
+        List<Czesc> cz;
+        Kierownik k { get; set; }
+        Osoba Spawacz { get; set; }
+        Maszyna maszyna;
+        
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            
+        }
+        
+
+    }
+}
