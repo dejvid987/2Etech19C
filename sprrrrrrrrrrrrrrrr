@@ -1,0 +1,188 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApp3
+{
+    class Dostawa
+    {
+        public int NumerPrzesylki { get; set; }
+        public virtual void Przygotuj()
+        {
+            Console.WriteLine("Przygotowywanie paczki");
+        }
+        public virtual void WyswietlSzczegoly()
+        {
+            Console.WriteLine("Oto szczegóły: numer przesylki: " + NumerPrzesylki);
+        }
+    }
+    class Kurier : Dostawa
+    {
+        public int numerTel { get; set; }
+        public override void Przygotuj()
+        {
+            base.Przygotuj();
+            Console.WriteLine("Przygotowanie wysyłki dla kuriera");
+        }
+        public override void WyswietlSzczegoly()
+        {
+            base.WyswietlSzczegoly();
+            Console.WriteLine($"numer telefonu kuriera: {numerTel}");
+        }
+    }
+    class Paczkomat : Dostawa
+    {
+        public int NumerPaczkomatu { get; set; }
+        public override void Przygotuj()
+        {
+            base.Przygotuj();
+            Console.WriteLine("Przygotowanie wysyłki do paczkomatu");
+        }
+        public override void WyswietlSzczegoly()
+        {
+            base.WyswietlSzczegoly();
+            Console.WriteLine($"Numer paczkomatu to {NumerPaczkomatu}");
+        }
+    }
+    class Poczta : Dostawa
+    {
+        public string UrzadNadania { get; set; }
+        public override void Przygotuj()
+        {
+            base.Przygotuj();
+            Console.WriteLine("Przygotowanuie wysyłkidla kuriera");
+        }
+        public override void WyswietlSzczegoly()
+        {
+            base.WyswietlSzczegoly();
+            Console.WriteLine($"Urząd nadania to: {UrzadNadania}");
+        }
+    }
+    class Klient
+    {
+        private string imie { get; set; }
+        private string nazwisko {get; set;}
+        public void Zamawianie()
+        {
+            Console.WriteLine("Zamawiam części :)");
+        }
+
+    }
+    class Sprzedawca
+    {
+        private string imie { get; set; }
+        private string nazwisko { get; set; }
+        public void PrzyjecieZamowienia()
+        {
+            Console.WriteLine("Przyjmuje zamówienie");
+        }
+        public void Zatwierdzenie()
+        {
+            Console.WriteLine("Zatwierdzam");
+        }
+        public void GenerowanieWysylki()
+        {
+            Console.WriteLine("Wysyłka jest generowana");
+        }
+        public void WystawiaFakture()
+        {
+            Console.WriteLine("Wystawiam faktuer");
+        }
+    }
+    class Pracownik
+    {
+        private string imie { get; set; }
+        private string nazwisko { get; set; }
+        public void Pakowanie()
+        {
+            Console.WriteLine("Pracownik Pakuje paczke");
+        }
+    }
+    class Faktura
+    {
+        Sprzedawca sprzedawca;
+        private int numerFaktury { get; set; }
+        public void SetFaktura(Sprzedawca sprzedawca)
+        {
+            this.sprzedawca = sprzedawca;
+        }
+    }
+    class Zamowienie
+    {
+        Sprzedawca sprzedawca;
+        Klient klient;
+        public Zamowienie(Sprzedawca sprzedawca, Klient klient)
+        {
+            this.sprzedawca = sprzedawca;
+            this.klient = klient;
+        }
+    }
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("Wybierz sposób dostawy");
+            Console.WriteLine("1 = kurier");
+            Console.WriteLine(" 2 = paczkomat");
+            Console.WriteLine(" 3 = poczta");
+            int opcja = int.Parse(Console.ReadLine());
+            switch(opcja)
+            {
+                case 1:
+                    {
+                        Klient ka = new Klient();
+                        Kurier k = new Kurier();
+                        Sprzedawca s = new Sprzedawca();
+                        Pracownik pr = new Pracownik();
+                        ka.Zamawianie();
+                        s.PrzyjecieZamowienia();
+                        s.GenerowanieWysylki();
+                        s.WystawiaFakture();
+                        pr.Pakowanie();
+                        k.Przygotuj();
+                        k.numerTel = 123456789;
+                        k.NumerPrzesylki = 1550;
+                        k.WyswietlSzczegoly();
+                        break;
+                        
+                    }
+                case 2:
+                    {
+                        Paczkomat p = new Paczkomat();
+                        Klient ka = new Klient();
+                        Sprzedawca s = new Sprzedawca();
+                        Pracownik pr = new Pracownik();
+                        ka.Zamawianie();
+                        s.PrzyjecieZamowienia();
+                        s.GenerowanieWysylki();
+                        s.WystawiaFakture();
+                        pr.Pakowanie();
+                        p.Przygotuj();
+                        p.NumerPaczkomatu = 130707;
+                        p.NumerPrzesylki = 13071307;
+                        p.WyswietlSzczegoly();
+                        break;
+                    }
+                case 3:
+                    {
+                        Poczta po = new Poczta();
+                        Klient ka = new Klient();
+                        Sprzedawca s = new Sprzedawca();
+                        Pracownik pr = new Pracownik();
+                        ka.Zamawianie();
+                        s.PrzyjecieZamowienia();
+                        s.GenerowanieWysylki();
+                        s.WystawiaFakture();
+                        pr.Pakowanie();
+                        po.Przygotuj();
+                        po.UrzadNadania = "poznań dębiec";
+                        po.NumerPrzesylki = 13072007;
+                        po.WyswietlSzczegoly();
+                        break;
+                    }
+            }
+        }
+    }
+}
